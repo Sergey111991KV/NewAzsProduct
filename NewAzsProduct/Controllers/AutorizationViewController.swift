@@ -153,7 +153,7 @@ class AutorizationViewController: UIViewController {
         for user in users{
             if loginTextFild.text == user.login && passwordTextField.text == user.password {
                 currentUser = user
-                print(currentUser.nameAzs, user.nameAzs)
+                
                  performSegue(withIdentifier: "productSegue", sender: nil)
                
                   return
@@ -177,7 +177,7 @@ class AutorizationViewController: UIViewController {
                 let vc = segue.destination as? ProductTableViewController
                 vc?.userAzs = currentUser
                    
-         case "nom":
+         case "nonLoginOrPassword":
             break
          default:
             break

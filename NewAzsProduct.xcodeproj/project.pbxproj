@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C27188F231EEF9600FC4C3B /* TypePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C27188E231EEF9600FC4C3B /* TypePickerView.swift */; };
+		1C271891231EEFD300FC4C3B /* ShelvesPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C271890231EEFD300FC4C3B /* ShelvesPickerView.swift */; };
+		1C27189323203FA900FC4C3B /* IdTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C27189223203FA900FC4C3B /* IdTableViewCell.swift */; };
+		1C2718952320400500FC4C3B /* NameTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2718942320400500FC4C3B /* NameTextField.swift */; };
+		1C2718972320403500FC4C3B /* IdTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2718962320403500FC4C3B /* IdTextField.swift */; };
 		1C6B1408231AD903003BE8DE /* UserAzs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6B1407231AD903003BE8DE /* UserAzs.swift */; };
 		1C6B140C231ADD91003BE8DE /* UserTypeAzs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6B140B231ADD91003BE8DE /* UserTypeAzs.swift */; };
 		1C6B140E231ADE44003BE8DE /* Shelves.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6B140D231ADE44003BE8DE /* Shelves.swift */; };
@@ -15,16 +20,29 @@
 		1C6B1414231AE33D003BE8DE /* Azs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6B1413231AE33D003BE8DE /* Azs.swift */; };
 		1C6B1416231AF88C003BE8DE /* ProductTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6B1415231AF88C003BE8DE /* ProductTableViewController.swift */; };
 		1C8743AB231C3131001EB4B8 /* DetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8743AA231C3131001EB4B8 /* DetailTableViewController.swift */; };
-		1C8743D0231CC967001EB4B8 /* TableHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8743CF231CC967001EB4B8 /* TableHeader.swift */; };
+		1C8743D3231D6908001EB4B8 /* MyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8743D2231D6908001EB4B8 /* MyButton.swift */; };
 		1CA8ED38231A0D0F00305444 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA8ED37231A0D0F00305444 /* AppDelegate.swift */; };
 		1CA8ED3A231A0D0F00305444 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA8ED39231A0D0F00305444 /* SceneDelegate.swift */; };
 		1CA8ED3F231A0D1000305444 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CA8ED3D231A0D1000305444 /* Main.storyboard */; };
 		1CA8ED41231A0D1000305444 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1CA8ED40231A0D1000305444 /* Assets.xcassets */; };
 		1CA8ED44231A0D1000305444 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CA8ED42231A0D1000305444 /* LaunchScreen.storyboard */; };
 		1CA8ED4C231A0D2600305444 /* AutorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA8ED4B231A0D2600305444 /* AutorizationViewController.swift */; };
+		1CE2340A231DA7DA005F738F /* ExpendablesProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE23409231DA7DA005F738F /* ExpendablesProduct.swift */; };
+		1CE2340C231DE5DE005F738F /* NameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE2340B231DE5DE005F738F /* NameTableViewCell.swift */; };
+		1CE2340E231DE61D005F738F /* TypeNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE2340D231DE61D005F738F /* TypeNameTableViewCell.swift */; };
+		1CE23410231DE6F0005F738F /* TypePickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE2340F231DE6F0005F738F /* TypePickerTableViewCell.swift */; };
+		1CE23412231DE741005F738F /* DateLabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE23411231DE741005F738F /* DateLabelTableViewCell.swift */; };
+		1CE23414231DE785005F738F /* DatePickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE23413231DE785005F738F /* DatePickerTableViewCell.swift */; };
+		1CE23416231DE7E9005F738F /* ShelvesLabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE23415231DE7E9005F738F /* ShelvesLabelTableViewCell.swift */; };
+		1CE23418231DE833005F738F /* ShelvesPickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE23417231DE833005F738F /* ShelvesPickerTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1C27188E231EEF9600FC4C3B /* TypePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypePickerView.swift; sourceTree = "<group>"; };
+		1C271890231EEFD300FC4C3B /* ShelvesPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShelvesPickerView.swift; sourceTree = "<group>"; };
+		1C27189223203FA900FC4C3B /* IdTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdTableViewCell.swift; sourceTree = "<group>"; };
+		1C2718942320400500FC4C3B /* NameTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameTextField.swift; sourceTree = "<group>"; };
+		1C2718962320403500FC4C3B /* IdTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdTextField.swift; sourceTree = "<group>"; };
 		1C6B1407231AD903003BE8DE /* UserAzs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAzs.swift; sourceTree = "<group>"; };
 		1C6B140B231ADD91003BE8DE /* UserTypeAzs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTypeAzs.swift; sourceTree = "<group>"; };
 		1C6B140D231ADE44003BE8DE /* Shelves.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shelves.swift; sourceTree = "<group>"; };
@@ -33,7 +51,7 @@
 		1C6B1413231AE33D003BE8DE /* Azs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Azs.swift; sourceTree = "<group>"; };
 		1C6B1415231AF88C003BE8DE /* ProductTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTableViewController.swift; sourceTree = "<group>"; };
 		1C8743AA231C3131001EB4B8 /* DetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewController.swift; sourceTree = "<group>"; };
-		1C8743CF231CC967001EB4B8 /* TableHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableHeader.swift; sourceTree = "<group>"; };
+		1C8743D2231D6908001EB4B8 /* MyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyButton.swift; sourceTree = "<group>"; };
 		1CA8ED34231A0D0F00305444 /* NewAzsProduct.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewAzsProduct.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CA8ED37231A0D0F00305444 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1CA8ED39231A0D0F00305444 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -42,6 +60,14 @@
 		1CA8ED43231A0D1000305444 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1CA8ED45231A0D1000305444 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1CA8ED4B231A0D2600305444 /* AutorizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutorizationViewController.swift; sourceTree = "<group>"; };
+		1CE23409231DA7DA005F738F /* ExpendablesProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpendablesProduct.swift; sourceTree = "<group>"; };
+		1CE2340B231DE5DE005F738F /* NameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameTableViewCell.swift; sourceTree = "<group>"; };
+		1CE2340D231DE61D005F738F /* TypeNameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeNameTableViewCell.swift; sourceTree = "<group>"; };
+		1CE2340F231DE6F0005F738F /* TypePickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypePickerTableViewCell.swift; sourceTree = "<group>"; };
+		1CE23411231DE741005F738F /* DateLabelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateLabelTableViewCell.swift; sourceTree = "<group>"; };
+		1CE23413231DE785005F738F /* DatePickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerTableViewCell.swift; sourceTree = "<group>"; };
+		1CE23415231DE7E9005F738F /* ShelvesLabelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShelvesLabelTableViewCell.swift; sourceTree = "<group>"; };
+		1CE23417231DE833005F738F /* ShelvesPickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShelvesPickerTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +81,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1C8743D1231D68DA001EB4B8 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				1C8743D2231D6908001EB4B8 /* MyButton.swift */,
+				1C27188E231EEF9600FC4C3B /* TypePickerView.swift */,
+				1C271890231EEFD300FC4C3B /* ShelvesPickerView.swift */,
+				1C2718942320400500FC4C3B /* NameTextField.swift */,
+				1C2718962320403500FC4C3B /* IdTextField.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		1CA8ED2B231A0D0F00305444 = {
 			isa = PBXGroup;
 			children = (
@@ -74,6 +112,7 @@
 		1CA8ED36231A0D0F00305444 /* NewAzsProduct */ = {
 			isa = PBXGroup;
 			children = (
+				1C8743D1231D68DA001EB4B8 /* Extension */,
 				1CA8ED45231A0D1000305444 /* Info.plist */,
 				1CA8ED55231A0DBB00305444 /* Resourse */,
 				1CA8ED56231A0DD700305444 /* Controllers */,
@@ -96,6 +135,7 @@
 				1C6B140F231AE094003BE8DE /* ProductAzs.swift */,
 				1C6B1411231AE13D003BE8DE /* TypeProduct.swift */,
 				1C6B1413231AE33D003BE8DE /* Azs.swift */,
+				1CE23409231DA7DA005F738F /* ExpendablesProduct.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -128,7 +168,14 @@
 		1CA8ED51231A0D8A00305444 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				1C8743CF231CC967001EB4B8 /* TableHeader.swift */,
+				1CE2340B231DE5DE005F738F /* NameTableViewCell.swift */,
+				1CE2340D231DE61D005F738F /* TypeNameTableViewCell.swift */,
+				1CE2340F231DE6F0005F738F /* TypePickerTableViewCell.swift */,
+				1CE23411231DE741005F738F /* DateLabelTableViewCell.swift */,
+				1CE23413231DE785005F738F /* DatePickerTableViewCell.swift */,
+				1CE23415231DE7E9005F738F /* ShelvesLabelTableViewCell.swift */,
+				1CE23417231DE833005F738F /* ShelvesPickerTableViewCell.swift */,
+				1C27189223203FA900FC4C3B /* IdTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -229,18 +276,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C2718952320400500FC4C3B /* NameTextField.swift in Sources */,
+				1C2718972320403500FC4C3B /* IdTextField.swift in Sources */,
 				1C6B1412231AE13D003BE8DE /* TypeProduct.swift in Sources */,
 				1C8743AB231C3131001EB4B8 /* DetailTableViewController.swift in Sources */,
+				1CE2340C231DE5DE005F738F /* NameTableViewCell.swift in Sources */,
 				1C6B1414231AE33D003BE8DE /* Azs.swift in Sources */,
+				1C27188F231EEF9600FC4C3B /* TypePickerView.swift in Sources */,
+				1CE23418231DE833005F738F /* ShelvesPickerTableViewCell.swift in Sources */,
+				1C8743D3231D6908001EB4B8 /* MyButton.swift in Sources */,
 				1CA8ED38231A0D0F00305444 /* AppDelegate.swift in Sources */,
+				1CE2340A231DA7DA005F738F /* ExpendablesProduct.swift in Sources */,
+				1CE23412231DE741005F738F /* DateLabelTableViewCell.swift in Sources */,
 				1C6B1410231AE094003BE8DE /* ProductAzs.swift in Sources */,
-				1C8743D0231CC967001EB4B8 /* TableHeader.swift in Sources */,
 				1C6B1416231AF88C003BE8DE /* ProductTableViewController.swift in Sources */,
 				1C6B1408231AD903003BE8DE /* UserAzs.swift in Sources */,
 				1CA8ED4C231A0D2600305444 /* AutorizationViewController.swift in Sources */,
+				1CE23410231DE6F0005F738F /* TypePickerTableViewCell.swift in Sources */,
+				1C271891231EEFD300FC4C3B /* ShelvesPickerView.swift in Sources */,
 				1CA8ED3A231A0D0F00305444 /* SceneDelegate.swift in Sources */,
 				1C6B140E231ADE44003BE8DE /* Shelves.swift in Sources */,
+				1CE2340E231DE61D005F738F /* TypeNameTableViewCell.swift in Sources */,
 				1C6B140C231ADD91003BE8DE /* UserTypeAzs.swift in Sources */,
+				1C27189323203FA900FC4C3B /* IdTableViewCell.swift in Sources */,
+				1CE23414231DE785005F738F /* DatePickerTableViewCell.swift in Sources */,
+				1CE23416231DE7E9005F738F /* ShelvesLabelTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

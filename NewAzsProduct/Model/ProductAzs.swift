@@ -10,6 +10,7 @@ import Foundation
 
 
 struct ProductAzs: Codable {
+    var idAzs: Int
     var id: Int
     var name: String
     var typeProduct: TypeProduct

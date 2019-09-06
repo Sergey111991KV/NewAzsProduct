@@ -17,6 +17,6 @@ enum TypeProduct: String, Codable{
     case prezervative =  "Презервативы"
     
     
-    
+    static let all = [TypeProduct.aromatization, TypeProduct.oil , TypeProduct.tosol , TypeProduct.cholate , TypeProduct.bubleGum , TypeProduct.prezervative]
     
 }
