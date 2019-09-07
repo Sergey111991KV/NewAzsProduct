@@ -45,19 +45,20 @@ class AutorizationViewController: UIViewController {
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-    
-      verticalOrGorizontalView(size: size)
-
+        verticalOrGorizontalView(size: size)
+        
     }
-     override func viewWillAppear(_ animated: Bool) {
-           super.viewWillAppear(animated)
-           addKeyboardNotificationObservers()
-       }
-
-       override func viewWillDisappear(_ animated: Bool) {
-           super.viewWillDisappear(animated)
-           removeKeyboardNotificationObservers()
-       }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        addKeyboardNotificationObservers()
+        self.navigationController?.isNavigationBarHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        removeKeyboardNotificationObservers()
+        self.navigationController?.isNavigationBarHidden = false
+    }
     
     
     //MARK: - Inithialization
