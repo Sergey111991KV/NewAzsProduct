@@ -274,6 +274,7 @@ class DetailTableViewController: UITableViewController {
                 if indexPath.row <= (product?.shelves.count)! - 1{
                     let cell = tableView.dequeueReusableCell(withIdentifier: ShelvesLabelTableViewCell.reuseId, for: indexPath) as! ShelvesLabelTableViewCell
                      let numberShelveProduct = product!.shelves[indexPath.row].rawValue
+                    cell.labelShelves.text = String(numberShelveProduct)
                     if selectedRow != nil{
                         
                         switch indexPath.row {
@@ -345,6 +346,7 @@ class DetailTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) else {return}
         selectedRow = indexPath
+        cell.backgroundColor = UIColor.red
         if indexPath.section == 1{
             isCheckInType.toggle()
             isCheckInDate = false
@@ -372,7 +374,7 @@ class DetailTableViewController: UITableViewController {
             isCheckInShelves.toggle()
             isCheckInDate = false
             isCheckInType = false
-         
+            
             selectedRow = indexPath
            
             tableView.reloadData()
@@ -419,8 +421,9 @@ extension DetailTableViewController: UIPickerViewDataSource{
 
                case is ShelvesPickerView:
                    selectedShelvesProduct = allShelvesAzs[row]
-
-               default:
+                   
+                   product?.shelves[selectedRow!.row] = allShelvesAzs[row]
+         default:
                  break
                }
     }
@@ -468,13 +471,11 @@ extension DetailTableViewController: UITextFieldDelegate{
 
 extension DetailTableViewController{
 @objc func save (){
-    var shelvesArray = [Shelves]()
-    
-    print("asdf")
-    shelvesArray.append(selectedShelvesProduct!)
-    let product = ProductAzs(idAzs: idAzs, id: idProduct ?? 0, name: name, typeProduct: selectedTypeProduct ?? self.product!.typeProduct , data: nil, shelves: [Shelves.fife])
+   
+   
+    let newProduct = ProductAzs(idAzs: idAzs, id: idProduct ?? 0, name: name, typeProduct: selectedTypeProduct ?? self.product!.typeProduct , data: nil, shelves: product!.shelves)
 
-      print(#line, #function, product)
+      print(#line, #function, newProduct)
    
     }
 }
