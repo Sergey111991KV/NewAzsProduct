@@ -469,7 +469,7 @@ extension DetailTableViewController: UITextFieldDelegate{
 extension DetailTableViewController{
 @objc func save (){
     var shelvesArray = [Shelves]()
-    shelvesArray.append(<#T##newElement: Shelves##Shelves#>)
+    shelvesArray.append(selectedShelvesProduct!)
     let product = ProductAzs(idAzs: idAzs, id: idProduct ?? 0, name: name, typeProduct: selectedTypeProduct ?? self.product!.typeProduct , data: nil, shelves: [Shelves.fife])
 
       print(#line, #function, product)
