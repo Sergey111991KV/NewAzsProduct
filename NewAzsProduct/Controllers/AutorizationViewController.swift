@@ -159,10 +159,13 @@ class AutorizationViewController: UIViewController {
                
                   return
             }
-            else{
-                print("ERROR")
-            }
         }
+                let alertController = UIAlertController(title: "Ошибка", message: "Не правильно введены данные", preferredStyle: .alert)
+                let action = UIAlertAction(title: "ОК", style: .default, handler: nil)
+                alertController.addAction(action)
+                self.present(alertController, animated: true, completion: nil)
+            
+        
      
        
            

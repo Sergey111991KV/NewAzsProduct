@@ -17,5 +17,4 @@ struct ProductAzs: Codable {
     var data: [Date]?
     var shelves: [Shelves]
     
-    
 }

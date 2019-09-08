@@ -20,5 +20,6 @@ enum Shelves: Int, Codable{
     case fifteen = 15
     case sixteen = 16
     
-    
+    static let all = [Shelves.first, Shelves.second, Shelves.third, Shelves.four, Shelves.fife, Shelves.six, Shelves.fifteen, Shelves.sixteen]
+
 }

@@ -12,7 +12,7 @@ class ProductTableViewController: UITableViewController {
     
     //MARK: - Propertyes
     
-   
+   let searchController = UISearchController(searchResultsController: nil)
     let cellId = "product"
     let arrayAllProduct: [Azs] = [
         Azs(id: 9, product: [
@@ -26,17 +26,25 @@ class ProductTableViewController: UITableViewController {
             ProductAzs(idAzs: 16, id: 2, name: "Тосол", typeProduct: .tosol, data: nil, shelves: [.six]),
             ProductAzs(idAzs: 16, id: 3, name: "Дирол", typeProduct: .bubleGum, data: nil, shelves: [.first])], shelves: [.fife,.fifteen,.first,.four,.second,.six,.sixteen,.third])
     ]
-    
+    var arrayForSearh = [ProductAzs]()
     var currentArrayProduct: [ExpendablesProduct]!
     var userAzs: UserAzs!
     
-    
+    private var filteredProduct = [ProductAzs]()
+    private var searchBarIsEmpty: Bool{
+        guard let text = searchController.searchBar.text else{ return false }
+        return text.isEmpty
+    }
+    private var isFiltering: Bool{
+        return searchController.isActive && !searchBarIsEmpty
+    }
     
     
     //MARK: - Controllers Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        arrayForSearh = createArrayForSearch(azsArray: arrayAllProduct, user: userAzs)
         currentArrayProduct = arrayProductAzs(arrayAll: arrayAllProduct, userAzs: userAzs)
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellId)
@@ -44,11 +52,19 @@ class ProductTableViewController: UITableViewController {
         self.navigationController?.isNavigationBarHidden = false
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.title = "Товары на азс \(userAzs.nameAzs)"
-        
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Продукт"
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
+        print(arrayForSearh)
     }
 
     // MARK: - Table Header
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if isFiltering {
+            return nil
+        }
         let header = UIView()
         print(tableView.sectionFooterHeight)
         header.backgroundColor = UIColor.blue
@@ -110,34 +126,47 @@ class ProductTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if isFiltering{
+            return 0
+        }
         return 50
     }
     
     //MARK: - TableView Methods
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-       
+        if isFiltering{
+            return 1
+        }
         return currentArrayProduct.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        if !currentArrayProduct[section].isExplandable{
-            return 0
-        }else{
-            return currentArrayProduct[section].product.count
+        if isFiltering{
+           return filteredProduct.count
+        } else{
+            
+            if !currentArrayProduct[section].isExplandable{
+                return 0
+            }else{
+                return currentArrayProduct[section].product.count
+            }
         }
     }
     
-    
-           override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
-            
-            let name = currentArrayProduct[indexPath.section].product[indexPath.row].name
-            
-            
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if isFiltering{
+            let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
+            let name = arrayForSearh[indexPath.row].name
             cell.textLabel?.text = name
             
+            return cell
+            
+        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
+        let name = currentArrayProduct[indexPath.section].product[indexPath.row].name
+        cell.textLabel?.text = name
+        
         return cell
     }
     
@@ -212,6 +241,18 @@ class ProductTableViewController: UITableViewController {
         return shelvesArray
     }
     
+    func createArrayForSearch(azsArray: [Azs], user: UserAzs) -> [ProductAzs]{
+        var arrayFor = [ProductAzs]()
+        for azs in azsArray{
+            if azs.id == user.nameAzs{
+                for product in azs.product{
+                    arrayFor.append(product)
+                }
+            }
+        }
+        
+        return arrayFor
+    }
     
 }
 
@@ -225,8 +266,14 @@ extension ProductTableViewController{
             guard let selectedIndex = tableView.indexPathForSelectedRow else { return }
             
             let destination = segue.destination as! DetailTableViewController
+            let product: ProductAzs
+            if isFiltering{
+                product = filteredProduct[selectedIndex.row]
+            }else{
+                product = currentArrayProduct[selectedIndex.section].product[selectedIndex.row]
+            }
             
-            let product = currentArrayProduct[selectedIndex.section].product[selectedIndex.row]
+            
             let arrayShelves = createArrayShelves(array: arrayAllProduct, product: product)
             
             destination.product = product
@@ -257,7 +304,22 @@ extension ProductTableViewController{
 //            tableView.reloadRows(at: [selectedIndex], with: .automatic)
 //        }
     }
+//MARK: - SearchResultControllers
 
+extension ProductTableViewController: UISearchResultsUpdating{
+    func updateSearchResults(for searchController: UISearchController) {
+        filterContentForSearchText(searchController.searchBar.text!)
+    }
+    
+    private func filterContentForSearchText(_  searchText: String) {
+        filteredProduct = arrayForSearh.filter({ (product: ProductAzs) -> Bool in
+            return product.name.lowercased().contains(searchText.lowercased())
+        })
+        
+        tableView.reloadData()
+    }
+    
+}
     
     
 
