@@ -514,7 +514,13 @@ extension DetailTableViewController{
 @objc func save (){
    
    
-    let newProduct = ProductAzs(idAzs: idAzs, id: idProduct ?? 0, name: name, typeProduct: selectedTypeProduct ?? self.product!.typeProduct , data: newDataArray, shelves: product!.shelves)
+    let newProduct = ProductAzs(
+        idAzs: idAzs,
+        id: idProduct ?? 0,
+        name: name,
+        typeProduct: selectedTypeProduct ?? self.product!.typeProduct,
+        data: newDataArray,
+        shelves: newShelvesArray)
 
       print(#line, #function, newProduct)
    

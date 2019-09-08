@@ -18,7 +18,10 @@ class ProductTableViewController: UITableViewController {
         Azs(id: 9, product: [
             ProductAzs(idAzs: 9, id: 1, name: "Масло Лукойл 1л", typeProduct: .oil, data: nil, shelves: [.fife, .fifteen]),
             ProductAzs(idAzs: 9, id: 2, name: "Тосол", typeProduct: .tosol, data: nil, shelves: [.six]),
-            ProductAzs(idAzs: 9, id: 3, name: "Дирол", typeProduct: .bubleGum, data: nil, shelves: [.first])
+            ProductAzs(idAzs: 9, id: 3, name: "Дирол", typeProduct: .bubleGum, data: nil, shelves: [.first]),
+            ProductAzs(idAzs: 9, id: 4, name: "Тормозная жидкость", typeProduct: .tosol, data: nil, shelves: [Shelves.fife]),
+            ProductAzs(idAzs: 9, id: 5, name: "Орбит", typeProduct: .bubleGum, data: nil, shelves: [Shelves.sixteen]),
+            ProductAzs(idAzs: 9, id: 6, name: "Sico 12", typeProduct: .prezervative, data: nil, shelves: [Shelves.sixteen])
         
         ], shelves: [.fife,.fifteen,.first,.four,.second,.six,.sixteen,.third] ),
         Azs(id: 16, product: [
@@ -309,6 +312,7 @@ extension ProductTableViewController{
 extension ProductTableViewController: UISearchResultsUpdating{
     func updateSearchResults(for searchController: UISearchController) {
         filterContentForSearchText(searchController.searchBar.text!)
+       
     }
     
     private func filterContentForSearchText(_  searchText: String) {
