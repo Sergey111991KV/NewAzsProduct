@@ -60,7 +60,7 @@ class ProductTableViewController: UITableViewController {
         searchController.searchBar.placeholder = "Продукт"
         navigationItem.searchController = searchController
         definesPresentationContext = true
-        print(arrayForSearh)
+        
     }
 
     // MARK: - Table Header
@@ -69,7 +69,7 @@ class ProductTableViewController: UITableViewController {
             return nil
         }
         let header = UIView()
-        print(tableView.sectionFooterHeight)
+        
         header.backgroundColor = UIColor.blue
         
         let button = UIButton(type: .system)
