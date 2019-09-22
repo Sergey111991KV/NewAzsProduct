@@ -15,11 +15,11 @@ class DetailTableViewController: UITableViewController {
     
     let cellDefaultId = "Default"
 
-    var product: ProductAzs?
-    var allShelvesAzs: [Shelves] = [Shelves.fife, Shelves.fifteen]
+    var product: ProductSho?
+    var allShelvesAzs: [Shelves]!
     var dateOfProducts: [Date]?
     var typeProductAll = TypeProduct.all
-    var shelvesProductAll = Shelves.all
+ 
     var name: String = ""
     var idAzs: Int!
     var idProduct: Int?
@@ -49,7 +49,7 @@ class DetailTableViewController: UITableViewController {
     var newShelvesArray = [Shelves]()
     
     var selectedRow : IndexPath?
-    
+    var boolSelectedRow: Bool = false
     var isCheckInDate: Bool = false
     var isCheckInType: Bool = false
     
@@ -59,6 +59,15 @@ class DetailTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let gradient = CAGradientLayer()
+         gradient.frame = self.view.bounds
+         gradient.colors = [UIColor.blue.cgColor, UIColor.white.cgColor]
+         let viewTable = UIView()
+         viewTable.layer.addSublayer(gradient)
+        
+         self.tableView.backgroundView = viewTable
+         self.tableView.separatorStyle = .none
+        
         self.title = product == nil ? "Новый Продукт" : "\(product!.name)"
         name = product?.name ?? ""
         idProduct = product?.id ?? 0
@@ -72,7 +81,7 @@ class DetailTableViewController: UITableViewController {
         tableView.register(ShelvesPickerTableViewCell.self, forCellReuseIdentifier: ShelvesPickerTableViewCell.reuseId)
        tableView.register(IdTableViewCell.self, forCellReuseIdentifier: IdTableViewCell.reuseId)
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(save))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(save))
         tableView.reloadData()
         if product != nil {
             let dataArrayProduct = product?.data ?? []
@@ -85,6 +94,11 @@ class DetailTableViewController: UITableViewController {
                 newShelvesArray.append(shelves)
             }
             }
+        
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        self.navigationController?.setToolbarHidden(false, animated: true)
+       
+        
     }
     
   
@@ -174,6 +188,11 @@ class DetailTableViewController: UITableViewController {
     // MARK: - Table view cell
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if selectedRow == indexPath{
+            boolSelectedRow = true
+        }else{
+            boolSelectedRow = false
+        }
         switch indexPath.section {
             
             //MARK: - NAME
@@ -183,7 +202,7 @@ class DetailTableViewController: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: NameTableViewCell.reuseId, for: indexPath) as! NameTableViewCell
             cell.nameTextField.delegate = self
             cell.nameTextField.text = product?.name
-            
+            cell.backgroundColorSelected(bool: boolSelectedRow)
             return cell
             
             //MARK: - TYPE
@@ -197,7 +216,7 @@ class DetailTableViewController: UITableViewController {
                 let titleProduct = product?.typeProduct.rawValue ?? "non"
               
                 cell.labelType.text = selectedTypeProduct?.rawValue ?? titleProduct
-                
+                cell.backgroundColorSelected(bool: boolSelectedRow)
                 return cell
                 
             case 1:
@@ -208,11 +227,12 @@ class DetailTableViewController: UITableViewController {
                 if isCheckInType == false{
                     cell.isHidden = true
                 }
-                
+                cell.backgroundColorSelected(bool: boolSelectedRow)
                 return cell
                 
             default:
                 let cell = defaultCellTable(indexPath: indexPath)
+                cell.backgroundColorSelected(bool: boolSelectedRow)
                 return cell
             }
             
@@ -229,6 +249,7 @@ class DetailTableViewController: UITableViewController {
                     
                     print(newDataArray)
                     cell.labelDate.text = dateFormatter.string(from: newDataArray[indexPath.row])
+                    cell.backgroundColorSelected(bool: boolSelectedRow)
                     return cell
                 }else{
                     switch indexPath.row {
@@ -238,10 +259,12 @@ class DetailTableViewController: UITableViewController {
                         if isCheckInDate == false{
                             cell.isHidden = true
                         }
+                        cell.backgroundColorSelected(bool: boolSelectedRow)
                         return cell
                         
                     default:
                         let cell = defaultCellTable(indexPath: indexPath)
+                        cell.backgroundColorSelected(bool: boolSelectedRow)
                         return cell
                     }
                 }
@@ -249,6 +272,7 @@ class DetailTableViewController: UITableViewController {
                 switch indexPath.row {
                 case 0:
                     let cell = defaultCellTable(indexPath: indexPath)
+                    cell.backgroundColorSelected(bool: boolSelectedRow)
                     return cell
                 case 1:
                     let cell = tableView.dequeueReusableCell(withIdentifier: DatePickerTableViewCell.reuseId, for: indexPath) as! DatePickerTableViewCell
@@ -256,9 +280,11 @@ class DetailTableViewController: UITableViewController {
                     if isCheckInDate == false{
                         cell.isHidden = true
                     }
+                    cell.backgroundColorSelected(bool: boolSelectedRow)
                     return cell
                 default:
                     let cell = defaultCellTable(indexPath: indexPath)
+                    cell.backgroundColorSelected(bool: boolSelectedRow)
                     return cell
                 }
             }
@@ -267,10 +293,11 @@ class DetailTableViewController: UITableViewController {
 
         case 3:
             let numberOfRows = tableView.numberOfRows(inSection: 3) - 1
-            if product != nil{
+            if newShelvesArray != nil{
                 if indexPath.row <= newShelvesArray.count - 1{
                     let cell = tableView.dequeueReusableCell(withIdentifier: ShelvesLabelTableViewCell.reuseId, for: indexPath) as! ShelvesLabelTableViewCell
                     cell.labelShelves.text = String(newShelvesArray[indexPath.row].rawValue)
+                    cell.backgroundColorSelected(bool: boolSelectedRow)
                     return cell
                 } else{
                     switch indexPath.row {
@@ -281,9 +308,11 @@ class DetailTableViewController: UITableViewController {
                         if isCheckInShelves == false{
                             cell.isHidden = true
                         }
+                        cell.backgroundColorSelected(bool: boolSelectedRow)
                         return cell
                     default:
                         let cell = defaultCellTable(indexPath: indexPath)
+                        cell.backgroundColorSelected(bool: boolSelectedRow)
                         return cell
                     }
                 }
@@ -296,9 +325,12 @@ class DetailTableViewController: UITableViewController {
                     if isCheckInShelves == false{
                         cell.isHidden = true
                     }
+                    cell.backgroundColorSelected(bool: boolSelectedRow)
                     return cell
                 default:
                     let cell = defaultCellTable(indexPath: indexPath)
+                    cell.backgroundColorSelected(bool: boolSelectedRow)
+                    
                     return cell
             }
             }
@@ -310,10 +342,12 @@ class DetailTableViewController: UITableViewController {
              let cell = tableView.dequeueReusableCell(withIdentifier: IdTableViewCell.reuseId, for: indexPath) as! IdTableViewCell
              cell.idTextField.delegate = self
              cell.idTextField.text = String(product?.id ?? 0)
+             cell.backgroundColorSelected(bool: boolSelectedRow)
              return cell
 //MARK: - DEFAULT
         default:
             let cell = defaultCellTable(indexPath: indexPath)
+            cell.backgroundColorSelected(bool: boolSelectedRow)
             return cell
     }
     }
@@ -322,6 +356,7 @@ class DetailTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellDefaultId, for: indexPath)
         cell.textLabel?.text = "+"
         cell.textLabel?.textAlignment = NSTextAlignment.center
+        cell.backgroundColorSelected(bool: boolSelectedRow)
         return cell
     }
     
@@ -345,7 +380,7 @@ class DetailTableViewController: UITableViewController {
         guard let cell = tableView.cellForRow(at: indexPath) else {return}
        
        
-        cell.backgroundColor = UIColor.red
+        cell.backgroundColor = UIColor.gray
         if indexPath.section == 1{
             isCheckInType.toggle()
             isCheckInDate = false
@@ -388,6 +423,14 @@ class DetailTableViewController: UITableViewController {
         }
         selectedRow = indexPath
     }
+    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        print("Is this function working??")
+        let cell = tableView.cellForRow(at: indexPath)
+
+        cell?.backgroundColor = UIColor.clear
+        
+    }
+    
     
 //MARK: - Editing Cell
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -462,7 +505,7 @@ extension DetailTableViewController: UIPickerViewDataSource{
                   selectedTypeProduct = typeProductAll[row]
 
                case is ShelvesPickerView:
-                   newShelves = shelvesProductAll[row]
+                   newShelves = allShelvesAzs[row]
     
          default:
                  break
@@ -514,15 +557,16 @@ extension DetailTableViewController{
 @objc func save (){
    
    
-    let newProduct = ProductAzs(
-        idAzs: idAzs,
+    let newProduct = ProductSho(
+        idShop: idAzs,
         id: idProduct ?? 0,
         name: name,
         typeProduct: selectedTypeProduct ?? self.product!.typeProduct,
         data: newDataArray,
         shelves: newShelvesArray)
-
-      print(#line, #function, newProduct)
-   
+    self.product = newProduct
+ 
+   performSegue(withIdentifier: "SaveSegue", sender: self)
     }
+    
 }

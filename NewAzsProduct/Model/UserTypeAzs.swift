@@ -8,8 +8,9 @@
 
 import Foundation
 
-enum UsetTypeAzs: String,Codable{
+enum UserTypeShop: String,Codable{
  
     case tovaroved = "Tovaroved"
     case operatorAzs = "Operator"
+    case director = "Director"
 }

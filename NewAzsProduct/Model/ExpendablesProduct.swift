@@ -13,5 +13,6 @@ import Foundation
 struct ExpendablesProduct {
     
     var isExplandable: Bool
-    var product: [ProductAzs]
+    var product: [ProductSho]
+    var typeProduct: TypeProduct
 }

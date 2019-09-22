@@ -22,7 +22,7 @@ class ShelvesLabelTableViewCell: UITableViewCell {
     static let reuseId = "ShelvesLabelTableViewCell"
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
+         self.backgroundColor = UIColor.clear
          addSubview(labelShelves)
                 labelShelves.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 8).isActive = true
                        labelShelves.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -8).isActive = true

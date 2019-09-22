@@ -8,16 +8,16 @@
 
 import Foundation
 
-class Azs: Codable {
+class Shop: Codable {
   
     var id: Int
-    var product: [ProductAzs]
+    var product: [ProductSho]
     var shelves: [Shelves]
     
     init(
       
         id: Int,
-        product: [ProductAzs],
+        product: [ProductSho],
         shelves: [Shelves]
     ) {
         

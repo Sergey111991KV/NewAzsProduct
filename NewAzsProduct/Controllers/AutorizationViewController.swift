@@ -10,13 +10,15 @@ import UIKit
 
 class AutorizationViewController: UIViewController {
     
-    var currentUser: UserAzs!
-    
+    let productsShopRequest = ResourseRequest<ProductShop>(resoursePath: "productShops")
+    var currentUser: UserShop!
+    var productInRequest: [ProductShop] = []
     let users = [
-        UserAzs(id: 0, nameAzs: 16, type: .tovaroved, shelves: nil, login: "Anna", password: "123456"),
-        UserAzs(id: 1, nameAzs: 16, type: .operatorAzs, shelves: [Shelves.four, Shelves.fife, Shelves.fifteen, Shelves.sixteen], login: "Sergey", password: "123"),
-        UserAzs(id: 2, nameAzs: 9, type: .tovaroved, shelves: nil, login: "Ira", password: "123456"),
-        UserAzs(id: 3, nameAzs: 9, type: .operatorAzs, shelves: [Shelves.first, Shelves.second, Shelves.fifteen, Shelves.sixteen], login: "Katy", password: "123")
+        UserShop(id: 0, nameAzs: 16, type: .tovaroved, shelves: nil, login: "Anna", password: "123456"),
+        UserShop(id: 1, nameAzs: 16, type: .operatorAzs, shelves: [Shelves.four, Shelves.fife, Shelves.fifteen, Shelves.sixteen], login: "Sergey", password: "123"),
+        UserShop(id: 2, nameAzs: 9, type: .tovaroved, shelves: nil, login: "Ira", password: "123456"),
+        UserShop(id: 3, nameAzs: 9, type: .operatorAzs, shelves: [Shelves.first, Shelves.second, Shelves.fifteen, Shelves.sixteen], login: "Katy", password: "123"),
+        UserShop(id: 4, nameAzs: 9, type: .director, shelves: nil, login: "Abramenko", password: "1234567")
     ]
     
     //MARK: - Properties
@@ -38,10 +40,22 @@ class AutorizationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        productsShopRequest.getAll { [weak self] productShopResult in
+            switch productShopResult {
+               
+            case .failure:
+                print("ErrorPresenter")
+            case .success(let products):
+            DispatchQueue.main.async { [weak self] in
+                self?.productInRequest = products
+                
+                }
+        }
+        }
         frameView = self.view.frame.size
         verticalOrGorizontalView(size: frameView)
-        self.navigationController?.isNavigationBarHidden = true
-      
+        print(productInRequest)
+       
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -64,6 +78,7 @@ class AutorizationViewController: UIViewController {
     //MARK: - Inithialization
     
     func verticalOrGorizontalView(size: CGSize){
+       
         scroll = UIScrollView(frame: self.view.bounds)
         scroll.frame.size = size
         
@@ -78,6 +93,7 @@ class AutorizationViewController: UIViewController {
             secondView = UIImageView(frame: CGRect(origin: point, size: CGSize(width: size.width / 1.5, height: size.height / 2.5)))
             let textFieldImage = UIImage(named: "Union 1")
                   secondView.image = textFieldImage
+           
         }else{
             
             let point = CGPoint(x: self.scroll.frame.width / 4, y: self.scroll.frame.height / 8)
@@ -152,11 +168,16 @@ class AutorizationViewController: UIViewController {
     
     @objc func tapNextView(sender: UIButton){
         for user in users{
+           currentUser = user
             if loginTextFild.text == user.login && passwordTextField.text == user.password {
-                currentUser = user
                 
+                if currentUser.type == UserTypeShop.director{
+                    performSegue(withIdentifier: "Director", sender: nil)
+                }else{
+                    
+                    print(currentUser.login)
                  performSegue(withIdentifier: "productSegue", sender: nil)
-               
+                }
                   return
             }
         }
@@ -183,6 +204,18 @@ class AutorizationViewController: UIViewController {
                    
          case "nonLoginOrPassword":
             break
+         case "Director":
+            var arrayUser = [UserShop]()
+            for user in users{
+                if user.nameShopId == currentUser.nameShopId{
+                    arrayUser.append(user)
+                }
+            }
+            
+            let vc = segue.destination as? DirectorTableViewController
+            vc?.userAzs = currentUser
+            vc?.arrayUser = arrayUser
+            
          default:
             break
         

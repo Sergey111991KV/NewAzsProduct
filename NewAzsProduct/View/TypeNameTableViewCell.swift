@@ -26,7 +26,8 @@ class TypeNameTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .default, reuseIdentifier: reuseIdentifier)
         addSubview(labelType)
-         labelType.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 8).isActive = true
+         self.backgroundColor = UIColor.clear
+        labelType.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 8).isActive = true
                 labelType.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -8).isActive = true
                 labelType.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8).isActive = true
                 labelType.topAnchor.constraint(equalTo: self.topAnchor, constant: 8).isActive = true

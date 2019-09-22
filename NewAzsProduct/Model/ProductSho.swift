@@ -1,5 +1,5 @@
 //
-//  ProductAzs.swift
+//  ProductSho.swift
 //  NewAzsProduct
 //
 //  Created by Сергей Косилов on 31.08.2019.
@@ -9,8 +9,8 @@
 import Foundation
 
 
-struct ProductAzs: Codable {
-    var idAzs: Int
+struct ProductSho: Codable, Hashable {
+    var idShop: Int
     var id: Int
     var name: String
     var typeProduct: TypeProduct

@@ -8,10 +8,10 @@
 
 import Foundation
 
-class UserAzs: Codable {
+class UserShop: Codable {
     var id: Int
-    var nameAzs: Int
-    var type: UsetTypeAzs
+    var nameShopId: Int
+    var type: UserTypeShop
     var shelves: [Shelves]?
     var login: String
     var password: String
@@ -20,14 +20,14 @@ class UserAzs: Codable {
     init(
         id: Int,
         nameAzs: Int,
-        type: UsetTypeAzs,
+        type: UserTypeShop,
         shelves: [Shelves]?,
         login: String,
         password: String
        
     ) {
         self.id = id
-        self.nameAzs = nameAzs
+        self.nameShopId = nameAzs
         self.type = type
         self.shelves = shelves
         self.login = login
